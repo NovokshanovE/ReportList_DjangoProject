@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Раздел {{ section }}</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <h1>Раздел: {{ section }}</h1>
+    <ul>
+        {% for file in files %}
+            <li>
+                <h2>{{ file.title }}</h2>
+                <text>{{ file.content|safe }}</text>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/"><button>Home</button></a>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ file.title }}</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    {% comment %} <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> {% endcomment %}
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <h1>Раздел: {{ file.title }}</h1>
+
+        
+        
+    {% comment %} <h2></h2> {% endcomment %}
+    {% comment %} <p>{{ file.description }}</p>
+    {% if  file.image.url != "/media/0"%}
+        <img style="max-width: 450px; max-height: 300px" src="{{ file.image.url|safe }}" alt="{{ file.title }}">
+    {%endif%} {% endcomment %}
+    {% for image in images %}
+        {%if image.file.file_id == file.file_id%}
+        <img style="max-width: 450px; max-height: 300px" src="{{ image.image.url }}" alt="{{ image.description }}">
+        <p>{{ image.description }}</p>
+        {%endif%}
+    {% endfor %}
+    <p></p>
+    <text>{{ file.content }}</text>
+    <p></p>
+        
+        
+    
+    <a href="{% url 'home_view' %}">На главную</a>
+
+
+    
+</body>
+</html>

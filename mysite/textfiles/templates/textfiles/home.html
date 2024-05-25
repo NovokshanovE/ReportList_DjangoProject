@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список файлов</title>
+</head>
+<body>
+    <h1>Список файлов</h1>
+    <ul>
+        {% for file in files %}
+            <li>
+                {% comment %} <h2>{{ file.title }}</h2> {% endcomment %}
+                <a href="{% url 'file_detail' file.file_id %}"><button>{{ file.title }}</button></a>
+                <p></p>
+                {% comment %} <div>   </div> {% endcomment %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
