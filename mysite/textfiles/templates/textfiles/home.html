@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
     <title>Список файлов</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'textfiles/styles.css' %}">
+
 </head>
 <body>
     <h1>Список файлов</h1>
-    <ul>
+    <ul  class="file-list">
         {% for file in files %}
-            <li>
+            <li class="file-item">
                 {% comment %} <h2>{{ file.title }}</h2> {% endcomment %}
-                <a href="{% url 'file_detail' file.file_id %}"><button>{{ file.title }}</button></a>
+                <a href="{% url 'file_detail' file.file_id %}"><button class="custom-button">{{ file.title }}</button></a>
                 <p></p>
                 {% comment %} <div>   </div> {% endcomment %}
             </li>
