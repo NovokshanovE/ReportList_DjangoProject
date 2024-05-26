@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Список файлов</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'textfiles/styles.css' %}">
+    <link rel="icon" type="image/png" href="/media/image/icon.png">
+</head>
+<body>
+    {% comment %} <div class="container">
+        <h1>Группы файлов</h1>
+        <ul>
+            {% for group in groups %}
+                <li>
+                    <a href="{% url 'file_list' group.id %}">{{ group.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div> {% endcomment %}
+    <h1>Список файлов</h1>
+    <ul  class="file-list">
+        {% for file in files %}
+            <li class="file-item">
+                {% comment %} <h2>{{ file.title }}</h2> {% endcomment %}
+                {% comment %} {%if group.id == group%} {% endcomment %}
+                <a href="{% url 'file_detail' file.file_id %}"><button class="custom-button">{{ file.title }}</button></a>
+                <p></p>
+                {% comment %} {%endif%} {% endcomment %}
+                {% comment %} <div>   </div> {% endcomment %}
+            </li>
+        {% endfor %}
+    </ul>
+    <p></p>
+    <a href="{% url 'home_view' %}"><button  class="custom-button">На главную</button></a>
+</body>
+</html>

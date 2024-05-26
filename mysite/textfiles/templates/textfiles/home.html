@@ -1,22 +1,23 @@
+<!-- templates/group_list.html -->
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     {% load static %}
-    <title>Список файлов</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'textfiles/styles.css' %}">
-    <link rel="icon" type="image/png" href="/media/image/icon.png">
+    <meta charset="UTF-8">
+    <title>Группы файлов</title>
+    <link rel="stylesheet"  type="text/css" href="{% static 'textfiles/styles.css' %}">
 </head>
 <body>
-    <h1>Список файлов</h1>
-    <ul  class="file-list">
-        {% for file in files %}
-            <li class="file-item">
-                {% comment %} <h2>{{ file.title }}</h2> {% endcomment %}
-                <a href="{% url 'file_detail' file.file_id %}"><button class="custom-button">{{ file.title }}</button></a>
-                <p></p>
-                {% comment %} <div>   </div> {% endcomment %}
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <a href="{% url 'about' %}"><button  class="custom-button">Обо мне</button></a>
+        <h1>Группы файлов</h1>
+        <ul>
+            {% for group in groups %}
+                <li>
+                    <a href="{% url 'file_list' group.id %}"><button class="custom-button">{{ group.name }}</button></a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

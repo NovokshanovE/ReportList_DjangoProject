@@ -1,0 +1,18 @@
+<!-- templates/about.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Обо мне</title>
+    <link rel="stylesheet"  type="text/css" href="{% static 'textfiles/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Обо мне</h1>
+        <p>Студент 4-го курса МГТУ им. Н.Э. Баумана. Факультет РК. Кафедра РК6.</p>
+    </div>
+    <p></p>
+    <a href="{% url 'home_view' %}"><button  class="custom-button">На главную</button></a>
+</body>
+</html>
