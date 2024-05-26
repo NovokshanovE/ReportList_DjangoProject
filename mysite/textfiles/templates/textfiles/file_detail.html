@@ -1,13 +1,19 @@
+
+{% load post_tags %}
 <!DOCTYPE html>
 <html>
 <head>
     {% load static %}
     <title>{{ file.title }}</title>
+    {% comment %} <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> {% endcomment %}
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     {% comment %} <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> {% endcomment %}
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="{% static 'textfiles/style_file_view.css' %}">
     <link rel="icon" type="image/png" href="/media/image/icon.png">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
 </head>
 <body>
     <h1>Раздел: {{ file.title }}</h1>
@@ -21,12 +27,19 @@
     {%endif%} {% endcomment %}
     {% for image in images %}
         {%if image.file.file_id == file.file_id%}
-        <img style="max-width: 450px; max-height: 300px" src="{{ image.image.url }}" alt="{{ image.description }}">
-        <p>{{ image.description }}</p>
+        <img style="max-width: 50%; max-height: 30%" src="{{ image.image.url }}" alt="{{ image.description }}">
+        <center><p class="description">{{ image.description }}</p></center>
         {%endif%}
     {% endfor %}
     <p></p>
-    <text>{{ file.content }}</text>
+    {% comment %} <div id="markdown-content" ></div>
+    <script>
+        // Пример использования библиотеки marked.js для отображения Markdown-разметки
+        const markdownText = file.content ;
+        document.getElementById('markdown-content').innerHTML = marked(markdownText);
+    </script> {% endcomment %}
+    
+    <div>{{ file.content|markdown }}</div>
     <p></p>
         
         
